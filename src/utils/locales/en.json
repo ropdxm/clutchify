@@ -1,0 +1,151 @@
+{
+  "Navbar": {
+    "about": "About",
+    "benefits": "Benefits",
+    "activities": "Activities",
+    "games": "Courses",
+    "logIn": "Log in",
+    "register": "Register"
+  },
+  "HeroSection": {
+    "headerPartOne": "Proccess of getting into Top Unis can be ",
+    "headerPartTwo": " and ",
+    "easy": "easy",
+    "enjoyable": "enjoyable",
+    "desc": "It is about dedication and how you spend your time"
+  },
+  "AboutSection": {
+    "about": "about",
+    "whatIs": "What is ",
+    "desc": "It is a service that provides an educational activities for people who want to get into best USA, Canada, Europe universities. Proven and qualitative educational materials are our hallmark. Feel free to explore!",
+    "quality": "Quality",
+    "qualityDesc": "Guarantee of good quality of the transferred material, checked by our reliable Mentors",
+    "upToDate": "Up-to-date",
+    "upToDateDesc": "Rapidly developing application with systematic updates and news",
+    "rating": "Rating",
+    "ratingDesc": "Letting user know what level they are currently at based on their performance",
+    "entertainment": "Entertainment",
+    "entertainmentDesc": "Activities made not only to test yourself but to compete with your friends and have fun together"
+  },
+  "BenefitsSection": {
+    "benefits": "benefits",
+    "why": "Why would you start your college ",
+    "english": "application?",
+    "1": "1",
+    "popularity": "Top universities are renowned for their academic excellence and world-class faculty",
+    "2": "2",
+    "media": "Graduating from a prestigious university can enhance your professional reputation and open doors to various opportunities",
+    "3": "3",
+    "job": "Top universities have large and influential alumni networks",
+    "4": "4",
+    "traveling": "Top universities have strong connections with various industries and employers"
+  },
+  "ActivitiesSection": {
+    "activities": "activities",
+    "headerPartOne": "How does the learning look ",
+    "headerPartTwo": "like?",
+    "desc": "Upon registration, students take a diagnostic test to assess their current knowledge and strengths and weaknesses in various subjects. Based on the diagnostic results, the platform generates a personalized study plan for each student. The study plan outlines a timeline, study materials, and practice exercises, focusing on areas that need improvement. ",
+    "challenge": "Go challenge yourself!",
+    "vocabulary": "The study plan"
+  },
+  "GamesSection": {
+    "games": "games",
+    "bonus": "As a bonus for completing a ",
+    "quiz": "quiz...",
+    "desc": "After finishing a quiz you will be awarded with availability to sign in into our external games section. You will be able to play the games whose level of difficulty are adjusted to the score you achieved in the quiz."
+  },
+  "FooterSection": {
+    "socials": "Socials"
+  },
+  "LoginPage": {
+    "login": "Login",
+    "username": "Username:",
+    "password": "Password:",
+    "forgotPassword": "Forgot a password?",
+    "log in": "Log in",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "enterUsername": "Enter your username...",
+    "enterPassword": "Enter your password...",
+    "wrongCredentials": "Wrong username or password"
+  },
+  "ForgotPasswordModal": {
+    "forgotPassword": "Forgot Password",
+    "info": "We will send a password reset link to the following address",
+    "noUser": "There is no user with that email address",
+    "incorrectEmailFormat": "Incorrect e-mail format",
+    "enterEmail": "Enter your email...",
+    "send": "Send"
+  },
+  "RegistrationPage": {
+    "registration": "Registration",
+    "email": "Email:",
+    "enterEmail": "Enter your email...",
+    "wrongEmailFormat": "Incorrect e-mail format",
+    "emailTaken": "This email is already taken",
+    "username": "Username:",
+    "enterUsername": "Enter your username...",
+    "usernameInfo": "Min. 6, Max. 32, without Cyrillic characters",
+    "password": "Hasło:",
+    "enterPassword": "Enter your password...",
+    "capital": "Capital",
+    "lowercase": "Lowercase",
+    "digit": "Digit",
+    "min8Chars": "Min. 8 characters",
+    "usernameToLong": "Maximum number of characters used",
+    "usernameToShort": "Insufficient number of characters - min. 6",
+    "wrongChar": "Unauthorized characters were used",
+    "register": "Register",
+    "accountExist": "Already have an account?",
+    "log in": "Log in"
+  },
+  "ChooseActivityPage": {
+    "quiz": "Quiz",
+    "vocabulary": "Vocabulary"
+  },
+  "Notebook": {
+    "addNote": "Add a note",
+    "enterNotes": "Enter your notes...",
+    "exportInfo": "Enter a name for the exported text file",
+    "enterFileName": "Enter file name...",
+    "cancel": "Cancel",
+    "export": "Export",
+    "deletion": "Deletion",
+    "deletionInfo": "Are you sure you want to delete this note?",
+    "delete": "Delete"
+  },
+  "Quiz": {
+    "welcome": "Welcome to the quiz!",
+    "quizInfo": "The quiz consists of 3 levels of difficulty and 10 questions for each level.",
+    "quizDiffInfo": "You can directly select one of the levels or adjust it after answering a mixed batch of questions.",
+    "beginner": "beginner",
+    "intermediate": "intermediate",
+    "advanced": "advanced",
+    "adjust": "adjust the level",
+    "leaderboard": "leaderboard",
+    "next": "Next",
+    "finish": "Finish",
+    "scoreFirstPart": "You scored ",
+    "scoreSecondPart": " out of "
+  },
+
+  "Vocabulary": {
+    "vocabularyInfo": "Choose the correct option for each blank...",
+    "check": "check"
+  },
+  "Leaderboard": {
+    "username": "Username",
+    "score": "Score",
+    "difficulty": "Difficulty",
+    "rowsPerPage": "Rows per page",
+    "beginner": "beginner",
+    "intermediate": "intermediate",
+    "advanced": "advanced"
+  },
+  "Logout": {
+    "logout": "Logout",
+    "logoutInfo": "Are you sure you want to log out?",
+    "log out": "Log out",
+    "cancel": "Cancel"
+  }
+}
