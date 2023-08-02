@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 const app = firebase.initializeApp(firebaseConfig);
-
+// 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 OPEN AI API KEY
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
 

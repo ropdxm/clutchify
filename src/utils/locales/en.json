@@ -86,7 +86,7 @@
     "username": "Username:",
     "enterUsername": "Enter your username...",
     "usernameInfo": "Min. 6, Max. 32, without Cyrillic characters",
-    "password": "Hasło:",
+    "password": "Password:",
     "enterPassword": "Enter your password...",
     "capital": "Capital",
     "lowercase": "Lowercase",

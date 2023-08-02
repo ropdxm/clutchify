@@ -3,13 +3,11 @@ import { imgBasePath } from "@utils/imgs";
 import { paths } from "@utils/paths";
 import { ReactElement, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { LogoutConfirmationModal } from "./LogoutConfirmationModal/LogoutConfirmationModal";
-import { NotebookWidget } from "./NotebookWidget/NotebookWidget";
 import { Logout } from "./Protected.styled";
 import { useAuth } from "@AuthContext";
+import ChatApp from '../../components/App/ChatApp';
 
 const Protected = (): ReactElement => {
-  const [isVisible, setIsVisible] = useState(false);
   const { user, loading, logout } = useAuth();
 
   if (loading) return <h1>Loading</h1>
@@ -19,7 +17,6 @@ const Protected = (): ReactElement => {
 
   return (
     <div>
-      <NotebookWidget />
       <Logout
         imgSrc={imgBasePath + "/logout.svg"}
         onClick={() => logout()}
@@ -30,7 +27,10 @@ const Protected = (): ReactElement => {
           onVisibilityChange={setIsVisible}
         />
       )} */}
-      <Outlet />
+
+      <ChatApp />
+      
+
     </div>
   );
 };
