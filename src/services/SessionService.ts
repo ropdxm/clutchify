@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 
 type LoginArgs = {
   password: string;
-  username: string;
+  email: string;
 };
 
 type RegistrationArgs = {
@@ -24,28 +24,10 @@ type ResetPasswordArgs = {
 const sessionServiceDef = () => {
   const login = async (args: LoginArgs) => {
     try {
-      firebase.auth().signInWithEmailAndPassword(args.username, args.password)
-      .then((userCredential) => {
-        // Successful login
-        console.log('User logged in:', userCredential.user?.email);
-      })
-      .catch((error) => {
-        // Handle login errors
-        console.error('Error logging in:', error);
-      });
-
-
-      // const response = await axios.post("/login", {
-      //   username: args.username,
-      //   password: args.password,
-      // });
-
-      // const { data } = response;
-      // const { token } = data;
-
-      // localStorage.setItem("accessToken", "Bearer " + token);
-
-      return;
+      const userCredential = await firebase.auth().signInWithEmailAndPassword(args.email, args.password);
+      // Successful login
+      console.log('User logged in:', userCredential.user?.email);
+      return userCredential;
     } catch (e) {
       throw new Error("Something went wrong");
     }
@@ -53,32 +35,17 @@ const sessionServiceDef = () => {
 
   const register = async (args: RegistrationArgs) => {
     try {
-      firebase.auth().createUserWithEmailAndPassword(args.email, args.password)
-      .then((userCredential: any) => {
-        // Successful signup
-        const user = userCredential.user;
-        console.log('User signed up:', user?.email);
-      })
-
-
-      // const response = await axios.post("/register", {
-      //   email: args.email,
-      //   username: args.username,
-      //   password: args.password,
-      // });
-
-      // const { data } = response;
-      // const { token } = data;
-
-      // localStorage.setItem("accessToken", "Bearer " + token);
-
-      // return response;
+      const userCredential = await firebase.auth().createUserWithEmailAndPassword(args.email, args.password);
+      // Successful signup
+      const user = userCredential.user;
+      console.log('User signed up:', user?.email);
       return 1;
-    } catch (e) {
-      console.error(e)
+    } catch (error) {
+      console.error(error);
       throw new Error("Something went wrong");
     }
   };
+  
 
   const forgotPassword = async (email: string) => {
     try {

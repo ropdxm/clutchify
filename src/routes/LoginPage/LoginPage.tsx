@@ -38,12 +38,12 @@ const LoginPage = (): ReactElement => {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
+      email: "",
       password: "",
     },
 
     validationSchema: Yup.object({
-      username: Yup.string().required(),
+      email: Yup.string().required(),
       password: Yup.string().required(),
     }),
 
@@ -56,10 +56,6 @@ const LoginPage = (): ReactElement => {
 
         onSuccess: (response) => {
           formik.resetForm();
-
-          // const accessToken = response.data.token;
-          // setSessionState({ status: "auth", accessToken });
-
           navigate(paths.app);
         },
       });
@@ -86,14 +82,35 @@ const LoginPage = (): ReactElement => {
       <img alt="england" src="./assets/england.svg" />
       <LoginForm autoComplete="off" onSubmit={formik.handleSubmit}>
         <h2>{t("login")}</h2>
-        <Email isError={isError}>
-          <label htmlFor="username">{t("username")}</label>
-          <input
-            id="username"
-            placeholder={t("enterUsername")}
-            type="username"
-            {...formik.getFieldProps("username")}
-          />
+        <Email errors={formik.errors} isError={isError}>
+          <label htmlFor="email">Email:</label>
+          <div>
+            <input
+              id="email"
+              placeholder="Enter your email..."
+              type="email"
+              {...formik.getFieldProps("email")}
+              onBlur={() => {
+                formik.validateField("email");
+              }}
+            />
+            {formik.errors.email && (
+              <p>
+                <ErrorOutlineIcon /> Wrong email format
+              </p>
+            )}
+
+            {/* {formik.values.email.length >= 1 && (
+              <button
+                onClick={() =>
+                  formik.setValues({ ...formik.values, email: "" })
+                }
+                type="button"
+              >
+                <CloseRoundedIcon />
+              </button>
+            )} */}
+          </div>
         </Email>
         <Password isCapsLockOn={isCapsLockOn} isError={isError}>
           <label htmlFor="password">{t("password")}</label>
@@ -106,7 +123,7 @@ const LoginPage = (): ReactElement => {
               {...formik.getFieldProps("password")}
             />
             <p>
-              <ErrorOutlineIcon /> {t("wrongCredentials")}
+              <ErrorOutlineIcon /> Wrong email or password
             </p>
             <TextInfo isCapsLockOn={isCapsLockOn} isVisible={isVisible}>
               <button
@@ -123,7 +140,7 @@ const LoginPage = (): ReactElement => {
 
         <LoginButton
           disabled={
-            !(formik.values.username && formik.values.password) ||
+            !(formik.values.email && formik.values.password) ||
             !formik.isValid
           }
           isLoading={isLoading}
