@@ -1,5 +1,5 @@
 import { paths } from "@utils/paths";
-import { lazy, ReactElement, Suspense } from "react";
+import { lazy, ReactElement, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ChooseActivityPage from "./ChooseActivityPage/ChooseActivityPage";
 import LandingPage from "./LandingPage/LandingPage";
@@ -9,6 +9,9 @@ import QuizDifficulties from "./QuizPage/QuizDifficulties/QuizDifficulties";
 import QuizPage from "./QuizPage/QuizPage";
 import RegistrationPage from "./RegistrationPage/RegistrationPage";
 import ResetPasswordPage from "./ResetPasswordPage/ResetPasswordPage";
+
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase";
 
 const QuizQuestions = lazy(
   () => import("./QuizPage/QuizQuestions/QuizQuestions")
@@ -20,6 +23,24 @@ const QuizLeaderboard = lazy(
 const VocabularyPage = lazy(() => import("./VocabularyPage/VocabularyPage"));
 
 export const Router = (): ReactElement => {
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          const uid = user.uid;
+          // ...
+          console.log("uid", uid)
+        } else {
+          // User is signed out
+          // ...
+          console.log("user is logged out")
+        }
+      });
+     
+  }, [])
+
+
   return (
     <BrowserRouter>
       <Routes>

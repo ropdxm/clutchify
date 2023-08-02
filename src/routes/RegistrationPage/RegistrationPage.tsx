@@ -71,8 +71,8 @@ const RegistrationPage = (): ReactElement => {
         onSuccess: (response) => {
           formik.resetForm();
 
-          const accessToken = response.data.token;
-          setSessionState({ status: "auth", accessToken });
+          // const accessToken = response.data.token;
+          // setSessionState({ status: "auth", accessToken });
 
           navigate(paths.app);
         },

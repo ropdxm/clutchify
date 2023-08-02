@@ -1,4 +1,8 @@
 import axios from "./api/axios";
+import { string } from "yup";
+import firebase from "../firebase";
+import 'firebase/compat/auth';
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 type LoginArgs = {
   password: string;
@@ -20,17 +24,28 @@ type ResetPasswordArgs = {
 const sessionServiceDef = () => {
   const login = async (args: LoginArgs) => {
     try {
-      const response = await axios.post("/login", {
-        username: args.username,
-        password: args.password,
+      firebase.auth().signInWithEmailAndPassword(args.username, args.password)
+      .then((userCredential) => {
+        // Successful login
+        console.log('User logged in:', userCredential.user?.email);
+      })
+      .catch((error) => {
+        // Handle login errors
+        console.error('Error logging in:', error);
       });
 
-      const { data } = response;
-      const { token } = data;
 
-      localStorage.setItem("accessToken", "Bearer " + token);
+      // const response = await axios.post("/login", {
+      //   username: args.username,
+      //   password: args.password,
+      // });
 
-      return response;
+      // const { data } = response;
+      // const { token } = data;
+
+      // localStorage.setItem("accessToken", "Bearer " + token);
+
+      return;
     } catch (e) {
       throw new Error("Something went wrong");
     }
@@ -38,19 +53,29 @@ const sessionServiceDef = () => {
 
   const register = async (args: RegistrationArgs) => {
     try {
-      const response = await axios.post("/register", {
-        email: args.email,
-        username: args.username,
-        password: args.password,
-      });
+      firebase.auth().createUserWithEmailAndPassword(args.email, args.password)
+      .then((userCredential: any) => {
+        // Successful signup
+        const user = userCredential.user;
+        console.log('User signed up:', user?.email);
+      })
 
-      const { data } = response;
-      const { token } = data;
 
-      localStorage.setItem("accessToken", "Bearer " + token);
+      // const response = await axios.post("/register", {
+      //   email: args.email,
+      //   username: args.username,
+      //   password: args.password,
+      // });
 
-      return response;
+      // const { data } = response;
+      // const { token } = data;
+
+      // localStorage.setItem("accessToken", "Bearer " + token);
+
+      // return response;
+      return 1;
     } catch (e) {
+      console.error(e)
       throw new Error("Something went wrong");
     }
   };

@@ -19,6 +19,7 @@ import {
   TextInfo,
   Username,
 } from "./LoginPage.styled";
+import { Email } from "@routes/RegistrationPage/Registration.styled"; 
 
 const LoginPage = (): ReactElement => {
   const { t } = useTranslation("common", { keyPrefix: "LoginPage" });
@@ -56,8 +57,8 @@ const LoginPage = (): ReactElement => {
         onSuccess: (response) => {
           formik.resetForm();
 
-          const accessToken = response.data.token;
-          setSessionState({ status: "auth", accessToken });
+          // const accessToken = response.data.token;
+          // setSessionState({ status: "auth", accessToken });
 
           navigate(paths.app);
         },
@@ -85,7 +86,7 @@ const LoginPage = (): ReactElement => {
       <img alt="england" src="./assets/england.svg" />
       <LoginForm autoComplete="off" onSubmit={formik.handleSubmit}>
         <h2>{t("login")}</h2>
-        <Username isError={isError}>
+        <Email isError={isError}>
           <label htmlFor="username">{t("username")}</label>
           <input
             id="username"
@@ -93,7 +94,7 @@ const LoginPage = (): ReactElement => {
             type="username"
             {...formik.getFieldProps("username")}
           />
-        </Username>
+        </Email>
         <Password isCapsLockOn={isCapsLockOn} isError={isError}>
           <label htmlFor="password">{t("password")}</label>
           <div>
