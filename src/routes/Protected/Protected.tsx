@@ -10,7 +10,7 @@ import { useAuth } from "@AuthContext";
 
 const Protected = (): ReactElement => {
   const [isVisible, setIsVisible] = useState(false);
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
 
   if (loading) return <h1>Loading</h1>
   if (!user) {
@@ -22,7 +22,7 @@ const Protected = (): ReactElement => {
       <NotebookWidget />
       <Logout
         imgSrc={imgBasePath + "/logout.svg"}
-        onClick={() => setIsVisible(true)}
+        onClick={() => logout()}
       />
       {/* {isVisible && (
         <LogoutConfirmationModal

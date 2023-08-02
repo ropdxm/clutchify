@@ -1,16 +1,18 @@
 // AuthContext.ts
 import { createContext, useContext, useEffect, useState } from 'react';
-import firebase from 'firebase/compat/app'; // Import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'; // Import the authentication module separately
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 interface AuthContextProps {
-  user: firebase.User | null; // Use firebase.User type for user
+  user: firebase.User | null;
   loading: boolean;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextProps>({
   user: null,
   loading: true,
+  logout: () => {}, // Empty logout function initially
 });
 
 export function useAuth() {
@@ -18,12 +20,11 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<firebase.User | null>(null); // Use firebase.User type
+  const [user, setUser] = useState<firebase.User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-        // console.log(user)
       setUser(user);
       setLoading(false);
     });
@@ -31,8 +32,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => unsubscribe();
   }, []);
 
+  const logout = () => {
+    firebase.auth().signOut()
+      .then(() => {
+        // Logout successful
+        console.log('User logged out');
+      })
+      .catch((error) => {
+        // Handle logout errors
+        console.error('Error logging out:', error);
+      });
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user, loading, logout }}>
       {children}
     </AuthContext.Provider>
   );
