@@ -11,11 +11,11 @@ import { Wrapper } from "./LandingPage.styled";
 import { Navbar } from "./Navbar/Navbar";
 
 const LandingPage = (): ReactElement => {
-  const { sessionState } = useAuth();
+  // const { sessionState } = useAuth();
 
-  if (sessionState.status === "auth") {
-    return <Navigate replace to={paths.app} />;
-  }
+  // if (sessionState.status === "auth") {
+  //   return <Navigate replace to={paths.app} />;
+  // }
 
   return (
     <Wrapper>
