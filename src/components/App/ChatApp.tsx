@@ -1,178 +1,157 @@
-import {useState} from 'react';
-import axios from "axios";
-import PromptInput from "../PromptInput/PromptInput";
-import './App.css';
-import {ResponseInterface} from "../PromptResponseList/response-interface";
-import PromptResponseList from "../PromptResponseList/PromptResponseList";
-import { Logout } from '@routes/Protected/Protected.styled';
+// ChatApp.tsx
 
-type ModelValueType = 'gpt' | 'codex' | 'image';
-const App = () => {
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './chat.css';
+import { FaPaperPlane } from 'react-icons/fa'; // Import the paper plane icon from React Icons
 
-  const [responseList, setResponseList] = useState<ResponseInterface[]>([]);
-  const [prompt, setPrompt] = useState<string>('');
-  const [promptToRetry, setPromptToRetry] = useState<string | null>(null);
-  const [uniqueIdToRetry, setUniqueIdToRetry] = useState<string | null>(null);
-  const [modelValue, setModelValue] = useState<ModelValueType>('gpt');
-  const [isLoading, setIsLoading] = useState(false);
-  let loadInterval: number | undefined;
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
 
-  const generateUniqueId = () => {
-    const timestamp = Date.now();
-    const randomNumber = Math.random();
-    const hexadecimalString = randomNumber.toString(16);
+const welcomeMessage =
+  "Welcome to the Psychological Support Chat. Feel free to share your thoughts and feelings, and the AI will provide helpful responses.";
 
-    return `id-${timestamp}-${hexadecimalString}`;
-  }
+const preReadyQuestions = [
+  "I'm feeling sad.",
+  "I'm feeling anxious.",
+  "I'm feeling stressed.",
+  "I'm feeling overwhelmed.",
+  "I'm feeling lonely.",
+];
+  
+  
+const ChatApp: React.FC = () => {
+  const [messages, setMessages] = useState<Message[]>(() => {
+    const savedMessages = localStorage.getItem('chatMessages');
+    return savedMessages ? JSON.parse(savedMessages) : [];
+  });
+  const [userInput, setUserInput] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const htmlToText = (html: string) => {
-    const temp = document.createElement('div');
-    temp.innerHTML = html;
-    return temp.textContent;
-  }
-
-  const delay = (ms: number) => {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-  }
-
-  const addLoader = (uid: string) => {
-    const element = document.getElementById(uid) as HTMLElement;
-    element.textContent = ''
-
-    // @ts-ignore
-    loadInterval = setInterval(() => {
-      // Update the text content of the loading indicator
-      element.textContent += '.';
-
-      // If the loading indicator has reached three dots, reset it
-      if (element.textContent === '....') {
-        element.textContent = '';
-      }
-    }, 300);
-  }
+  useEffect(() => {
+    localStorage.setItem('chatMessages', JSON.stringify(messages));
+  }, [messages]);
 
 
-  const addResponse = (selfFlag: boolean, response?: string) => {
-    const uid = generateUniqueId()
-    setResponseList(prevResponses => [
-      ...prevResponses,
-      {
-        id: uid,
-        response,
-        selfFlag
-      },
-    ]);
-    return uid;
-  }
+  const openaiApiKey = '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';
 
-  const updateResponse = (uid: string, updatedObject: Record<string, unknown>) => {
-    setResponseList(prevResponses => {
-      const updatedList = [...prevResponses]
-      const index = prevResponses.findIndex((response) => response.id === uid);
-      if (index > -1) {
-        updatedList[index] = {
-          ...updatedList[index],
-          ...updatedObject
-        }
-      }
-      return updatedList;
-    });
-  }
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${openaiApiKey}`,
+  };
 
-  const regenerateResponse = async () => {
-    await getGPTResult(promptToRetry, uniqueIdToRetry);
-  }
-
-  const getGPTResult = async (_promptToRetry?: string | null, _uniqueIdToRetry?: string | null) => {
-    // Get the prompt input
-    const _prompt = _promptToRetry ?? htmlToText(prompt);
-
-    // If a response is already being generated or the prompt is empty, return
-    if (isLoading || !_prompt) {
-      return;
-    }
-
-    setIsLoading(true);
-
-    // Clear the prompt input
-    setPrompt('');
-
-    let uniqueId: string;
-    if (_uniqueIdToRetry) {
-      uniqueId = _uniqueIdToRetry;
-    } else {
-      // Add the self prompt to the response list
-      addResponse(true, _prompt);
-      uniqueId = addResponse(false);
-      await delay(50);
-      addLoader(uniqueId);
-    }
+  const handleSendMessage = async () => {
+    if (userInput.trim() === '') return;
 
     try {
-      // Send a POST request to the API with the prompt in the request body
-      const response = await axios.post('get-prompt-result', {
-        prompt: _prompt,
-        model: modelValue
-      });
-      if (modelValue === 'image') {
-        // Show image for `Create image` model
-        updateResponse(uniqueId, {
-          image: response.data,
-        });
-      } else {
-        updateResponse(uniqueId, {
-          response: response.data.trim(),
-        });
+      setLoading(true); // Set loading to true during API request
+
+      const newUserMessage: Message = { role: 'user', content: userInput };
+      setMessages([...messages, newUserMessage]);
+
+      const payload = {
+        model: 'gpt-3.5-turbo',
+        messages: [...messages, newUserMessage],
+        temperature: 0.7,
+      };
+
+      const response = await axios.post(
+        'https://api.openai.com/v1/chat/completions',
+        payload,
+        { headers }
+      );
+
+      const chatGptResponse = response.data.choices[0].message.content;
+
+      let assistantMessage = chatGptResponse;
+      if (userInput.toLowerCase().includes('sad')) {
+        assistantMessage =
+          "I'm sorry to hear that you're feeling sad. Remember, it's okay to reach out for support and talk about your feelings.";
+      } else if (
+        userInput.toLowerCase().includes('anxious') ||
+        userInput.toLowerCase().includes('nervous')
+      ) {
+        assistantMessage =
+          "Feeling anxious or nervous is normal, especially during challenging times. Take deep breaths and try to focus on positive thoughts.";
+      } else if (
+        userInput.toLowerCase().includes('stress') ||
+        userInput.toLowerCase().includes('overwhelmed')
+      ) {
+        assistantMessage =
+          "It sounds like you're feeling stressed or overwhelmed. Consider taking short breaks and engaging in activities you enjoy.";
+      } else if (userInput.toLowerCase().includes('lonely')) {
+        assistantMessage =
+          "Feeling lonely can be tough, but remember that there are people who care about you. Reach out to friends, family, or someone you trust.";
+      } else if (userInput.toLowerCase().includes('thank you')) {
+        assistantMessage =
+          "You're welcome! Remember, I'm here to support you whenever you need someone to talk to.";
       }
 
-      setPromptToRetry(null);
-      setUniqueIdToRetry(null);
-    } catch (err) {
-      setPromptToRetry(_prompt);
-      setUniqueIdToRetry(uniqueId);
-      updateResponse(uniqueId, {
-        // @ts-ignore
-        response: `Error: ${err.message} bjhbhj`,
-        error: true
-      });
-    } finally {
-      // Clear the loader interval
-      clearInterval(loadInterval);
-      setIsLoading(false);
+      const newAssistantMessage: Message = {
+        role: 'assistant',
+        content: assistantMessage,
+      };
+      setMessages([...messages, newAssistantMessage]);
+
+      setLoading(false); // Set loading to false after receiving response
+
+      setUserInput(''); // Clear input field after sending message
+    } catch (error) {
+      setLoading(false); // Set loading to false on error
+
+      console.error('Error fetching response from GPT-3.5:', error);
+      const errorMessage: Message = {
+        role: 'assistant',
+        content: 'Oops, something went wrong!',
+      };
+      setMessages([...messages, errorMessage]);
     }
-  }
+  };
+
+  const handleSelectQuestion = (question: string) => {
+    setUserInput(question); // Set the selected question as the user input
+  };
+
 
   return (
-    <div className="App">
-      <Logout />
-      <div id="response-list">
-        <PromptResponseList responseList={responseList} key="response-list"/>
+    <div className="chat-container">
+      <div className="messages">
+        {messages.map((message, index) => (
+          <div key={index} className={`message ${message.role}`}>
+            {message.content}
+          </div>
+        ))}
       </div>
-      { uniqueIdToRetry &&
-        (<div id="regenerate-button-container">
-          <button id="regenerate-response-button" className={isLoading ? 'loading' : ''} onClick={() => regenerateResponse()}>
-            Regenerate Response
-          </button>
-        </div>
-        )
-      }
-      <div id="model-select-container">
-        <label htmlFor="model-select">Select model:</label>
-        <select id="model-select" value={modelValue} onChange={(event) => setModelValue(event.target.value as ModelValueType)}>
-          <option value="gpt">GPT-3 (Understand and generate natural language )</option>
-        </select>
-      </div>
-      <div id="input-container">
-        <PromptInput
-          prompt={prompt}
-          onSubmit={() => getGPTResult()}
-          key="prompt-input"
-          updatePrompt={(prompt) => setPrompt(prompt)}
+      <div className="input-container">
+        <input
+          type="text"
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          placeholder="Type your message..."
+          disabled={loading} // Disable input field while loading
         />
-        <button id="submit-button" className={isLoading ? 'loading' : ''} onClick={() => getGPTResult()}></button>
+        <button onClick={handleSendMessage} disabled={loading}>
+          {loading ? (
+            <span className="loading">Sending...</span>
+          ) : (
+            <span className="send-icon">
+              <FaPaperPlane />
+            </span>
+          )}
+        </button>
+
+      </div>
+      <div className="pre-ready-questions">
+        {preReadyQuestions.map((question, index) => (
+          <div key={index} className="question-box" onClick={() => handleSelectQuestion(question)}>
+            {question}
+          </div>
+        ))}
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default ChatApp;
