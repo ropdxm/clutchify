@@ -23,7 +23,7 @@ const preReadyQuestions = [
   "I'm feeling lonely.",
 ];
   
-const serverBaseUrl = 'http://localhost:5000/api/chat'; // Update with your server URL
+const serverBaseUrl = 'https://server-jasa.vercel.app/api/chat'; // Update with your server URL
 
 const ChatApp: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>(() => {
