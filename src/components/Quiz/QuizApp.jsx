@@ -2,9 +2,10 @@ import { Component } from 'react';
 import quizQuestions from './api/quizQuestions';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
-import logo from './svg/logo.svg';
 import './App.css';
 import './index.css';
+import { Navbar } from '@routes/LandingPage/Navbar/Navbar';
+
 
 class QuizApp extends Component {
   constructor(props) {
@@ -127,10 +128,7 @@ class QuizApp extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>React Quiz</h2>
-        </div>
+        <Navbar />
         {this.state.result ? this.renderResult() : this.renderQuiz()}
       </div>
     );
