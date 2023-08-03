@@ -1,153 +1,151 @@
 {
   "Navbar": {
-    "about": "O portalu",
-    "benefits": "Korzyści",
-    "activities": "Aktywności",
-    "games": "Gry",
-    "logIn": "Zaloguj",
-    "register": "Zarejestruj"
+    "about": "О нас",
+    "benefits": "Выгода",
+    "activities": "Чат",
+    "games": "Курсы",
+    "logIn": "Логин",
+    "register": "Регистрация"
   },
   "HeroSection": {
-    "headerPartOne": "Nauka angielskiego może być ",
-    "headerPartTwo": " i ",
-    "easy": "łatwa",
-    "enjoyable": "przyjemna",
-    "desc": "Chodzi po prostu o to, z jakich materiałów korzystasz i jak się uczysz...",
-    "readMore": "Czytaj więcej"
+    "headerPartOne": "Процесс поступления в Топовые Университеты может быть",
+    "headerPartTwo": " и ",
+    "easy": "легким",
+    "enjoyable": "приятным",
+    "desc": "Речь идет о самоотдаче и о том, как вы проводите свое время"
   },
   "AboutSection": {
-    "about": "o portalu",
-    "whatIs": "Czym jest ",
-    "desc": "Jest to serwis, który zapewnia aktywności edukacyjne dla osób, które chcą podnieść swoje umiejętności w zakresie języka angielskiego w oparciu o ich aktualny poziom. Sprawdzone i jakościowe materiały edukacyjne to nasz znak rozpoznawczy. Zapraszamy do odkrywania!",
-    "quality": "Jakość",
-    "qualityDesc": "Gwarancja dobrej jakości przekazywanych materiałów",
-    "upToDate": "Nowości",
-    "upToDateDesc": "Szybko rozwijająca się aplikacja z systematycznymi aktualizacjami i nowościami",
-    "rating": "Ocena",
-    "ratingDesc": "Informowanie użytkownika o poziomie, na którym aktualnie się znajduje na podstawie jego wyników",
-    "entertainment": "Rozrywka",
-    "entertainmentDesc": "Aktywności są nie tylko po to, by się sprawdzić, ale by rywalizować z przyjaciółmi i wspólnie się bawić"
+    "about": "о нас",
+    "whatIs": "Что такое ",
+    "desc": "Это сервис, который предоставляет образовательные услуги для людей, которые хотят поступить в лучшие университеты США, Канады, Европы. Проверенные и качественные учебные материалы являются нашей визитной карточкой. Не стесняйтесь исследовать!",
+    "quality": "Качество",
+    "qualityDesc": "Гарантия хорошего качества передаваемого материала, проверенного нашими наставниками",
+    "upToDate": "Актуальный",
+    "upToDateDesc": "Быстро развивающееся приложение с систематическими обновлениями и новостями",
+    "rating": "Рейтинг",
+    "ratingDesc": "Информирование пользователя о том, на каком уровне он находится в данный момент",
+    "entertainment": "Развлечение",
+    "entertainmentDesc": "Занятия проводятся чтобы испытать себя"
   },
   "BenefitsSection": {
-    "benefits": "korzyści",
-    "why": "Dlaczego miałbyś zacząć uczyć się języka ",
-    "english": "angielskiego?",
+    "benefits": "выгоды",
+    "why": "Почему вы начали подавать заявление в ",
+    "english": "колледж?",
     "1": "1",
-    "popularity": "Jest to najczęściej używany język na świecie",
+    "popularity": "Ведущие университеты славятся своими академическими достижениями и преподавательским составом мирового класса",
     "2": "2",
-    "media": "Jest to język mediów",
+    "media": "Окончание престижного университета может повысить вашу профессиональную репутацию и открыть двери для различных возможностей",
     "3": "3",
-    "job": "Zwiększ swoje szanse na zdobycie dobrej pracy",
+    "job": "Ведущие университеты имеют крупные и влиятельные сети выпускников",
     "4": "4",
-    "traveling": "Podróżuj po świecie bez obaw, że zostaniesz źle zrozumiany"
+    "traveling": "Ведущие университеты имеют прочные связи с различными отраслями промышленности и работодателями"
   },
   "ActivitiesSection": {
-    "activities": "aktywności",
-    "headerPartOne": "Jak wygląda ",
-    "headerPartTwo": "nauka?",
-    "desc": "Weź udział w quizie gramatycznym lub sprawdź swoją znajomość słownictwa. W obu przypadkach masz dostęp do widżetu notatnika, który pozwala na robienie ważnych notatek, a następnie eksportowanie ich w plikach .txt w razie potrzeby. ",
-    "challenge": "Podejmij wyzwanie!",
-    "vocabulary": "nauka słownictwa"
+    "activities": "деятельность",
+    "headerPartOne": "Как выглядит процесс ",
+    "headerPartTwo": "обучения?",
+    "desc": "После регистрации учащиеся проходят диагностический тест, чтобы оценить свои текущие знания, а также сильные и слабые стороны по различным предметам. Основываясь на результатах диагностики, платформа формирует индивидуальный учебный план для каждого студента. В учебном плане излагаются сроки, учебные материалы и практические упражнения с акцентом на области, которые нуждаются в улучшении. ",
+    "challenge": "Иди и испытай себя!",
+    "vocabulary": "Учебный план"
   },
   "GamesSection": {
-    "games": "gry",
-    "bonus": "Jako bonus za wzięcie udziału w ",
-    "quiz": "quizie...",
-    "desc": "Po ukończeniu quizu otrzymasz możliwość zalogowania się do naszej sekcji gier zewnętrznych. Będziesz mógł zagrać w gry, których poziom trudności jest dostosowany do wyniku, jaki uzyskałeś w quizie."
+    "games": "games",
+    "bonus": "As a bonus for completing a ",
+    "quiz": "quiz...",
+    "desc": "After finishing a quiz you will be awarded with availability to sign in into our external games section. You will be able to play the games whose level of difficulty are adjusted to the score you achieved in the quiz."
   },
   "FooterSection": {
-    "socials": "Media"
+    "socials": "Социальные сети"
   },
   "LoginPage": {
-    "login": "Logowanie",
-    "username": "Nazwa użytkownika:",
-    "password": "Hasło:",
-    "forgotPassword": "Nie pamiętasz hasła?",
-    "log in": "Zaloguj",
-    "noAccount": "Nie posiadasz konta?",
-    "register": "Zarejestruj",
-    "enterUsername": "Wprowadź nazwę użytkownika...",
-    "enterPassword": "Wprowadź hasło...",
-    "wrongCredentials": "Niepoprawna nazwa użytkownika lub hasło"
+    "login": "Login",
+    "username": "Username:",
+    "password": "Password:",
+    "forgotPassword": "Forgot a password?",
+    "log in": "Log in",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "enterUsername": "Enter your username...",
+    "enterPassword": "Enter your password...",
+    "wrongCredentials": "Wrong username or password"
   },
   "ForgotPasswordModal": {
-    "forgotPassword": "Zapomnienie hasła",
-    "info": "Wyślemy link do resetu hasła na następujący adres:",
-    "noUser": "Nie ma użytkownika o tym adresie e-mail",
-    "incorrectEmailFormat": "Niepoprawny email format",
-    "enterEmail": "Wprowadź swój email...",
-    "send": "Wyślij"
+    "forgotPassword": "Forgot Password",
+    "info": "We will send a password reset link to the following address",
+    "noUser": "There is no user with that email address",
+    "incorrectEmailFormat": "Incorrect e-mail format",
+    "enterEmail": "Enter your email...",
+    "send": "Send"
   },
   "RegistrationPage": {
-    "registration": "Rejestracja",
+    "registration": "Registration",
     "email": "Email:",
-    "enterEmail": "Wprowadź email...",
-    "wrongEmailFormat": "Niepoprawny email format",
-    "emailTaken": "Ten email jest już zajęty",
-    "username": "Nazwa użytkownika:",
-    "enterUsername": "Wprowadź nazwę użytkownika...",
-    "usernameInfo": "Min. 6, Max. 32, bez polskich znaków",
-    "password": "Hasło:",
-    "enterPassword": "Wprowadź hasło...",
-    "capital": "Wielka litera",
-    "lowercase": "Mała litera",
-    "digit": "Cyfra",
-    "min8Chars": "Min. 8 znaków",
-    "usernameToLong": "Maksymalna liczba znaków osiągnięta",
-    "usernameToShort": "Nie wystarczająca ilość znaków - min. 6",
-    "wrongChar": "Niedozwolone znaki zostały użyte",
-    "register": "Zarejestruj",
-    "accountExist": "Posiadasz konto?",
-    "log in": "Zaloguj"
+    "enterEmail": "Enter your email...",
+    "wrongEmailFormat": "Incorrect e-mail format",
+    "emailTaken": "This email is already taken",
+    "username": "Username:",
+    "enterUsername": "Enter your username...",
+    "usernameInfo": "Min. 6, Max. 32, without Cyrillic characters",
+    "password": "Password:",
+    "enterPassword": "Enter your password...",
+    "capital": "Capital",
+    "lowercase": "Lowercase",
+    "digit": "Digit",
+    "min8Chars": "Min. 8 characters",
+    "usernameToLong": "Maximum number of characters used",
+    "usernameToShort": "Insufficient number of characters - min. 6",
+    "wrongChar": "Unauthorized characters were used",
+    "register": "Register",
+    "accountExist": "Already have an account?",
+    "log in": "Log in"
   },
   "ChooseActivityPage": {
     "quiz": "Quiz",
-    "vocabulary": "Nauka słownictwa"
+    "vocabulary": "Vocabulary"
   },
-
   "Notebook": {
-    "addNote": "Dodaj notatkę",
-    "enterNotes": "Wprowadź tekst...",
-    "exportInfo": "Nadaj nazwę eksportowanemu plikowi",
-    "enterFileName": "Wprowadź nazwę...",
-    "cancel": "Anuluj",
-    "export": "Eksport",
-    "deletion": "Usuwanie",
-    "deletionInfo": "Jesteś pewien, że chcesz usunąć tę notatkę?",
-    "delete": "Usuń"
+    "addNote": "Add a note",
+    "enterNotes": "Enter your notes...",
+    "exportInfo": "Enter a name for the exported text file",
+    "enterFileName": "Enter file name...",
+    "cancel": "Cancel",
+    "export": "Export",
+    "deletion": "Deletion",
+    "deletionInfo": "Are you sure you want to delete this note?",
+    "delete": "Delete"
   },
   "Quiz": {
-    "welcome": "Witaj w quizie!",
-    "quizInfo": "Quiz zawiera 3 poziomy trudności, po 10 pytań na każdy.",
-    "quizDiffInfo": "Możesz bezpośrednio wybrać jeden z poziomów lub dostosować go po udzieleniu odpowiedzi na mieszaną partię pytań.",
-    "beginner": "początkujący",
-    "intermediate": "średnio zaawansowany",
-    "advanced": "zaawansowany",
-    "adjust": "dostosuj poziom",
-    "leaderboard": "tabela wyników",
-    "next": "Następne",
-    "finish": "Zakończ",
-    "scoreFirstPart": "Zdobyłeś ",
-    "scoreSecondPart": " z ",
-    "points": " punktów"
+    "welcome": "Welcome to the quiz!",
+    "quizInfo": "The quiz consists of 3 levels of difficulty and 10 questions for each level.",
+    "quizDiffInfo": "You can directly select one of the levels or adjust it after answering a mixed batch of questions.",
+    "beginner": "beginner",
+    "intermediate": "intermediate",
+    "advanced": "advanced",
+    "adjust": "adjust the level",
+    "leaderboard": "leaderboard",
+    "next": "Next",
+    "finish": "Finish",
+    "scoreFirstPart": "You scored ",
+    "scoreSecondPart": " out of "
   },
+
   "Vocabulary": {
-    "vocabularyInfo": "Wybierz poprawną odpowiedź dla każdej z luk...",
-    "check": "sprawdź"
+    "vocabularyInfo": "Choose the correct option for each blank...",
+    "check": "check"
   },
   "Leaderboard": {
-    "username": "Nazwa użytkownika",
-    "score": "Punktacja",
-    "difficulty": "Poziom zaawansowania",
-    "rowsPerPage": "Wiersze na stronę",
-    "beginner": "początkujący",
-    "intermediate": "średnio zaawansowany",
-    "advanced": "zaawansowany"
+    "username": "Username",
+    "score": "Score",
+    "difficulty": "Difficulty",
+    "rowsPerPage": "Rows per page",
+    "beginner": "beginner",
+    "intermediate": "intermediate",
+    "advanced": "advanced"
   },
   "Logout": {
-    "logout": "Wylogowanie",
-    "logoutInfo": "Jesteś pewien, że chcesz się wylogować?",
-    "log out": "Wyloguj",
-    "cancel": "Anuluj"
+    "logout": "Logout",
+    "logoutInfo": "Are you sure you want to log out?",
+    "log out": "Log out",
+    "cancel": "Cancel"
   }
 }
