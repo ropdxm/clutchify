@@ -75,7 +75,8 @@ export const HeroImg = styled.div`
 
   img {
     width: max-content;
-    height: 37.5rem;
+    height: 30.5rem;
+    width: 37.5rem;
   }
 
   @media (max-width: 1241px) {

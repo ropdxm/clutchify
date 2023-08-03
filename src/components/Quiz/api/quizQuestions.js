@@ -1,6 +1,6 @@
 var quizQuestions = [
   {
-      question: "What franchise would you rather play a game from?",
+      question: "What is a derivative",
       answers: [
           {
               type: "Wrong 1",
