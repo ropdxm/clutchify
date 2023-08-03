@@ -9,6 +9,7 @@ import {
   ModalWrapper,
   Warning,
 } from "./DeleteConfirmationModal.styled";
+import { notesService } from "@services/NotesService";
 
 type Props = {
   noteId: string;
