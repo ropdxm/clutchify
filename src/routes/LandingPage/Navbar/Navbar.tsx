@@ -13,14 +13,15 @@ import {
   NavListMobile,
   NavWrapper,
 } from "./Navbar.styled";
-import { useAuth } from "@hooks/useAuth";
+import { useAuth } from "@AuthContext";
 
 export const Navbar = (): ReactElement => {
   const { t } = useTranslation("common", { keyPrefix: "Navbar" });
 
+const { user, loading, logout } = useAuth();
+
   const { currentLanguage, setCurrentLanguage } = useContext(AuthContext);
 
-  const { sessionState } = useAuth();
 
   const [isMenuVisible, setIsMenuVisible] = useState({
     mobile: false,
@@ -43,7 +44,7 @@ export const Navbar = (): ReactElement => {
   };
 
   const handleChat = () => {
-    if (sessionState.status !== "auth") {
+    if (user) {
       navigate(paths.chat);
     }else{
       navigate(paths.register);
@@ -51,7 +52,7 @@ export const Navbar = (): ReactElement => {
   }
 
   const handleCourses = () => {
-    if (sessionState.status !== "auth") {
+    if (user) {
       navigate(paths.app);
     }else{
       navigate(paths.register);
@@ -79,7 +80,7 @@ export const Navbar = (): ReactElement => {
       </NavList>
       <div>
         <Buttons isVisible={isMenuVisible.language}>
-          <NavButtons style={{display: sessionState.status==='auth' ? 'flex' : 'none'}}>
+          <NavButtons style={{display: user ? 'none' : 'flex'}}>
             <button onClick={() => navigate(paths.login)}>{t("logIn")}</button>
             <button onClick={() => navigate(paths.register)}>
               {t("register")}
