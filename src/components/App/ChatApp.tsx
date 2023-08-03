@@ -35,7 +35,7 @@ const ChatApp: React.FC = () => {
   }, [messages]);
 
 
-  const openaiApiKey = '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';
+  const openaiApiKey = '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';
 
   const headers = {
     'Content-Type': 'application/json',
