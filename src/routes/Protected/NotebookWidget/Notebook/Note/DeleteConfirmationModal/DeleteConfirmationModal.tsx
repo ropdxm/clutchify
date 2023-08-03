@@ -1,5 +1,4 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { notesService } from "@services/NotesService";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { imgBasePath } from "@utils/imgs";
 import { ReactElement } from "react";
