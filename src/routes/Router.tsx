@@ -11,6 +11,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import Courses from "./Courses/Courses";
 import QuizApp from '../components/Quiz/QuizApp';
+import ChatApp from "@components/App/ChatApp";
 
 export const Router = (): ReactElement => {
   useEffect(()=>{
@@ -35,6 +36,7 @@ export const Router = (): ReactElement => {
     <BrowserRouter>
       <Routes>
         <Route element={<LandingPage />} path={paths.root} />
+        <Route element={<ChatApp />} path={paths.chat} />
         <Route element={<Protected />} path={paths.app}>
           <Route element={<Courses />} index />
         </Route>

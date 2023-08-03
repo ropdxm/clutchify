@@ -4,5 +4,6 @@ export const paths = {
   register: "/register",
   resetPassword: "/resetPassword/:token",
   app: "/app",
-  quiz: "/app/quiz"
+  quiz: "/app/quiz",
+  chat: "/app/chat"
 };
