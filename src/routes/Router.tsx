@@ -10,6 +10,7 @@ import ResetPasswordPage from "./ResetPasswordPage/ResetPasswordPage";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import Courses from "./Courses/Courses";
+import QuizApp from '../components/Quiz/QuizApp';
 
 export const Router = (): ReactElement => {
   useEffect(()=>{
@@ -37,6 +38,7 @@ export const Router = (): ReactElement => {
         <Route element={<Protected />} path={paths.app}>
           <Route element={<Courses />} index />
         </Route>
+        <Route element={<QuizApp />} path={paths.quiz} />
         <Route element={<LoginPage />} path={paths.login} />
         <Route element={<RegistrationPage />} path={paths.register} />
         <Route element={<ResetPasswordPage />} path={paths.resetPassword} />

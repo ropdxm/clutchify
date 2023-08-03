@@ -3,5 +3,6 @@ export const paths = {
   login: "/login",
   register: "/register",
   resetPassword: "/resetPassword/:token",
-  app: "/app"
+  app: "/app",
+  quiz: "/app/quiz"
 };
