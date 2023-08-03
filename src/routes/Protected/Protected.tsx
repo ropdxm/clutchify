@@ -28,7 +28,9 @@ const Protected = (): ReactElement => {
         />
       )} */}
 
-      <ChatApp />
+      {/* <ChatApp /> */}
+
+      <Outlet />
       
 
     </div>

@@ -2,7 +2,7 @@ import { StyledProps } from "@utils/styledProps";
 import styled from "styled-components";
 
 export const WidgetWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 2rem;
   left: 2rem;
 `;

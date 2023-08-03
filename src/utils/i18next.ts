@@ -1,14 +1,14 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import enCommon from "./locales/en.json";
-import plCommon from "./locales/pl.json";
+import ruCommon from "./locales/pl.json";
 
-const supportedLngs = ["en"];
+const supportedLngs = ["en", "ru"];
 
 i18n.use(initReactI18next).init({
   resources: {
     en: { common: enCommon },
-    pl: { common: plCommon },
+    ru: { common: ruCommon },
   },
   lng: "en",
   fallbackLng: "en",

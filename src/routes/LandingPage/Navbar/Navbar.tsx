@@ -26,18 +26,18 @@ export const Navbar = (): ReactElement => {
 
   const navigate = useNavigate();
 
-  // const handleLanguageChange = () => {
-  //   if (currentLanguage === "en") {
-  //     setCurrentLanguage("pl");
-  //     i18n.changeLanguage("pl");
-  //     localStorage.setItem("language", "pl");
-  //   } else {
-  //     setCurrentLanguage("en");
-  //     i18n.changeLanguage("en");
-  //     localStorage.setItem("language", "en");
-  //   }
-  //   setIsMenuVisible({ ...isMenuVisible, language: false });
-  // };
+  const handleLanguageChange = () => {
+    if (currentLanguage === "en") {
+      setCurrentLanguage("ru");
+      i18n.changeLanguage("ru");
+      localStorage.setItem("language", "ru");
+    } else {
+      setCurrentLanguage("en");
+      i18n.changeLanguage("en");
+      localStorage.setItem("language", "en");
+    }
+    setIsMenuVisible({ ...isMenuVisible, language: false });
+  };
 
   return (
     <NavWrapper>
@@ -78,8 +78,8 @@ export const Navbar = (): ReactElement => {
               {currentLanguage} <KeyboardArrowDownIcon />
             </button>
             <div>
-              <button>
-                {currentLanguage}
+              <button onClick={handleLanguageChange}>
+                {currentLanguage==="en" ? "ru" : "en"}
               </button>
             </div>
           </div>
