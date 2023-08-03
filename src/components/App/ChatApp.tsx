@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './chat.css';
 import { FaPaperPlane } from 'react-icons/fa'; // Import the paper plane icon from React Icons
+import { Navbar } from '@routes/LandingPage/Navbar/Navbar';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -78,7 +79,10 @@ const ChatApp: React.FC = () => {
   };
 
   return (
+    <>
+          <Navbar />
     <div className="chat-container">
+
       <div className="messages">
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.role}`}>
@@ -112,6 +116,7 @@ const ChatApp: React.FC = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 
