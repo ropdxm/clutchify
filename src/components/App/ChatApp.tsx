@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './chat.css';
 import { FaPaperPlane } from 'react-icons/fa'; // Import the paper plane icon from React Icons
+import { Navbar } from '@routes/LandingPage/Navbar/Navbar';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -116,41 +117,43 @@ const ChatApp: React.FC = () => {
 
 
   return (
-    <div className="chat-container">
-      <div className="messages">
-        {messages.map((message, index) => (
-          <div key={index} className={`message ${message.role}`}>
-            {message.content}
-          </div>
-        ))}
+    <>
+      <Navbar />
+      <div className="chat-container">
+        <div className="messages">
+          {messages.map((message, index) => (
+            <div key={index} className={`message ${message.role}`}>
+              {message.content}
+            </div>
+          ))}
+        </div>
+        <div className="input-container">
+          <input
+            type="text"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            placeholder="Type your message..."
+            disabled={loading} // Disable input field while loading
+          />
+          <button onClick={handleSendMessage} disabled={loading}>
+            {loading ? (
+              <span className="loading">Sending...</span>
+            ) : (
+              <span className="send-icon">
+                <FaPaperPlane />
+              </span>
+            )}
+          </button>
+        </div>
+        <div className="pre-ready-questions">
+          {preReadyQuestions.map((question, index) => (
+            <div key={index} className="question-box" onClick={() => handleSelectQuestion(question)}>
+              {question}
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="input-container">
-        <input
-          type="text"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Type your message..."
-          disabled={loading} // Disable input field while loading
-        />
-        <button onClick={handleSendMessage} disabled={loading}>
-          {loading ? (
-            <span className="loading">Sending...</span>
-          ) : (
-            <span className="send-icon">
-              <FaPaperPlane />
-            </span>
-          )}
-        </button>
-
-      </div>
-      <div className="pre-ready-questions">
-        {preReadyQuestions.map((question, index) => (
-          <div key={index} className="question-box" onClick={() => handleSelectQuestion(question)}>
-            {question}
-          </div>
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
 

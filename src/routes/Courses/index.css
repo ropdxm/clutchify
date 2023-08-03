@@ -1,8 +1,3 @@
-:root {
-    --orange-button: #EE9207;
-    --gray-minus: #484848;
-}
-
 .course-catalogue {
     display: flex;
     flex-wrap: wrap;
@@ -52,6 +47,7 @@
 }
 .course-title-1 {
     text-align: center;
+    color: #825db3;
     margin-top: 3rem;
     font-size: 3rem;
 }

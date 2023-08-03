@@ -13,11 +13,14 @@ import {
   NavListMobile,
   NavWrapper,
 } from "./Navbar.styled";
+import { useAuth } from "@hooks/useAuth";
 
 export const Navbar = (): ReactElement => {
   const { t } = useTranslation("common", { keyPrefix: "Navbar" });
 
   const { currentLanguage, setCurrentLanguage } = useContext(AuthContext);
+
+  const { sessionState } = useAuth();
 
   const [isMenuVisible, setIsMenuVisible] = useState({
     mobile: false,
@@ -39,6 +42,22 @@ export const Navbar = (): ReactElement => {
     setIsMenuVisible({ ...isMenuVisible, language: false });
   };
 
+  const handleChat = () => {
+    if (sessionState.status !== "auth") {
+      navigate(paths.chat);
+    }else{
+      navigate(paths.register);
+    }
+  }
+
+  const handleCourses = () => {
+    if (sessionState.status !== "auth") {
+      navigate(paths.app);
+    }else{
+      navigate(paths.register);
+    }
+  }
+
   return (
     <NavWrapper>
       <Logo>
@@ -46,27 +65,27 @@ export const Navbar = (): ReactElement => {
       </Logo>
       <NavList>
         <li>
-          <a href="#about">{t("about")}</a>
+          <a href="#about" onClick={() => navigate('/')}>{t("about")}</a>
         </li>
         <li>
-          <a href="#benefits">{t("benefits")}</a>
+          <a href="#benefits" onClick={() => navigate('/')}>{t("benefits")}</a>
         </li>
         <li>
-          <a href="#activities">{t("activities")}</a>
+          <a onClick={handleChat}>{t("activities")}</a>
         </li>
         <li>
-          <a href="#courses">{t("games")}</a>
+          <a onClick={handleCourses} >{t("games")}</a>
         </li>
       </NavList>
       <div>
         <Buttons isVisible={isMenuVisible.language}>
-          <NavButtons>
+          <NavButtons style={{display: sessionState.status==='auth' ? 'flex' : 'none'}}>
             <button onClick={() => navigate(paths.login)}>{t("logIn")}</button>
             <button onClick={() => navigate(paths.register)}>
               {t("register")}
             </button>
           </NavButtons>
-          <div>
+          <div style={{display: window.location.pathname!=='/' ? "none" : "block"}}>
             <button
               onClick={() =>
                 setIsMenuVisible({
@@ -77,7 +96,7 @@ export const Navbar = (): ReactElement => {
             >
               {currentLanguage} <KeyboardArrowDownIcon />
             </button>
-            <div>
+            <div style={{display: window.location.pathname!=='/' ? "none" : "block"}}>
               <button onClick={handleLanguageChange}>
                 {currentLanguage==="en" ? "ru" : "en"}
               </button>
@@ -102,10 +121,10 @@ export const Navbar = (): ReactElement => {
               <a href="#reasons">{t("benefits")}</a>
             </li>
             <li>
-              <a href="#activities">{t("activities")}</a>
+              <a href="#activities" onClick={handleChat}>{t("activities")}</a>
             </li>
             <li>
-              <a href="#games">{t("games")}</a>
+              <a href="#games" onClick={handleCourses} >{t("games")}</a>
             </li>
           </ul>
         </NavListMobile>
