@@ -5,7 +5,7 @@ export const Logout = styled.button<StyledProps>`
   background: transparent url(${({ imgSrc }) => imgSrc}) no-repeat center;
   width: 4rem;
   height: 4rem;
-  position: absolute;
+  position: fixed;
   bottom: 2rem;
   right: 2rem;
   background-size: 4rem;

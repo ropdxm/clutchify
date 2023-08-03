@@ -1,5 +1,3 @@
-/*eslint-disable*/
-
 import { sessionService } from "@services/SessionService";
 
 export const asyncWrapper =
